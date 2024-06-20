@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login page </title>
+        <link rel="stylesheet" href="style.css">
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+             }
+            body{
+                width: 100px;
+                height: 100vh;
+                background-image:url(loginimage.jpg);
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: cover;
+                position: relative;
+            }
+           .form-box{
+            width: 400%;
+            max-width: 450px;
+            position: absolute;
+            top: 45%;
+            left: 920%;
+            margin-bottom: 40%;
+            transform: translate(-50%,-50%);
+            background: white;
+            padding: 50px,60px,70px;
+            text-align: center;
+
+           }
+           .form-box h1{
+            font-size: 30px;
+            margin-bottom: 40px;
+            padding-top: 30px;
+            color: rgb(18, 18, 87);
+            position: relative;
+           }
+           .form-box h1::after{
+            content: '';
+            width: 20px;
+            height: 3px;
+            border-radius: 2px;
+            background: rgb(18, 18, 87);
+            position: absolute;
+            bottom:-12px;
+            left:50%;
+            transform: translateX(-50%);
+           }
+           .input-group{
+            height: 180px;
+           }
+           .input-field{
+            background:#eaeaea;
+            margin: 15px 35px;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+           }
+           input{
+            width: 60%;
+            background: transparent;
+            border: 0;
+            outline: 0;
+            padding: 18px 15px;
+           }
+           .input-field i{
+            margin-left: 15px;
+            color: #999;
+           }
+           form p{
+            font-size: 13px;
+            text-align: left;
+            padding-left: 35px;
+            margin-bottom: 30px;
+           }
+           form p a{
+            color:rgb(10, 10, 51) ;
+           
+           }
+           .btn-field{
+            width:100%;
+            display: flex;
+            margin-top: 2px;
+           }
+           .btn-field button{
+            margin-top: 35px;
+            margin-left: 25px;
+            margin-bottom:80px;
+            width: 85%;
+            background:rgb(10, 10, 51) ;
+            color:#fff;
+            border-radius: 2px;
+            font-size: 14px;
+            padding: 4px;
+            cursor: pointer;
+           }
+           .input-field #name_error,
+           .input-field #pass_error
+           {
+            margin-top: 5px;
+            width: 345px;
+            font-size: 12px;
+            color: #c62828;
+            display: none;
+           }
+           button:hover{
+            background: rgb(40, 40, 142);
+           }
+            </style>
+          <script src="https://kit.fontawesome.com/3ad909b21a.js" crossorigin="anonymous"></script>
+            
+            
+        </head>
+    <body>
+       <div class="container">
+        <div class="form-box">
+           <h1>Login</h1>
+              <form class="login_form"  action="home.html" method="post" name="form" onsubmit="return validated()">
+                 <div class="input-group">
+                    <div class="input-field">
+                    <i class="fa-solid fa-user"></i>
+                    <input  autocomplete="off" type="text"  name="username" placeholder="username">
+                    <div id="name_error">Please fill your username</div>
+                </div>
+                <div class="input-field">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" name="pswd" placeholder="password">
+                    <div id="pass_error">Please fill your password</div>
+                </div>
+                <p><a href="#">Forget passsword?</a></p>
+                </div>
+                <div class="btn-field">
+                    <button type="submit" class="loginbtn">Login</button> 
+                </div>
+                
+            </form>
+        </div>
+       </div> 
+       <script>
+        var username=document.forms['form']['username'];
+        var pswd=document.forms['form']['pswd'];
+
+        var name_error=document.getElementById('name_error');
+        var pass_error=document.getElementById('pass_error');
+
+        username.addEventListener('textInput',username_Verify);
+        pswd.addEventListener('textInput',pswd_Verify);
+
+        function validated() {
+            if(username.value.length<3)
+            {
+                name_error.style.display="block";
+                username.focus();
+                return false;
+            }
+            if(pswd.value.length<7)
+            {
+                pass_error.style.display="block";
+                pswd.focus();
+                return false;
+            }
+            function username_Verify(){
+                if(username.value.length>=8){
+                    name_error.style.display="none";
+                    return true;
+                }
+            }
+            function pass_Verify(){
+                if(pswd.value.length>=5){
+                    pass_error.style.display="none";
+                    return true;
+                }
+            }
+            
+        }
+       </script>
+    </body>
+</html>
